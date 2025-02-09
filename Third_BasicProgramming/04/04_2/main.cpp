@@ -23,6 +23,9 @@ public:
         std::string response{m_town + ", " + m_street + ", " +  std::to_string(m_house_number) + ", " + std::to_string(m_flat_number)};
         return response;       
     }
+    std::string get_town() {
+        return m_town;
+    }
 };
 
 void sort(Address* addresses, int size)
@@ -31,7 +34,7 @@ void sort(Address* addresses, int size)
     for(int i{}; i < size; i++)
     {
         for(int j{}; j < size - 1; j++) {
-            if((int)(addresses[j].get_output_address()[1]) > (int)(addresses[j + 1].get_output_address()[1])) {
+            if((int)(addresses[j].get_town()[1]) > (int)(addresses[j + 1].get_town()[1])) {
                 tmp_address = addresses[j];
                 addresses[j] = addresses[j + 1];
                 addresses[j + 1] = tmp_address;
