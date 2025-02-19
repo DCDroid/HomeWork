@@ -1,6 +1,6 @@
 #include <iostream>
 
-#define MODE 0
+#define MODE 1
 
 #ifndef MODE
 #error Important macro required
@@ -19,7 +19,7 @@ int main()
 
     #if MODE == 0
         std::cout << "Work in test mode" << std::endl;
-    #else
+    #elif MODE == 1
         int a{}, b{};
         std::cout << "Work in fighting/war mode" << std::endl;
         std::cout << "Enter first number: ";
@@ -27,6 +27,8 @@ int main()
         std::cout << "Enter second number: ";
         std::cin >> b;
         std::cout << "Add result: " << add(a, b) << '\n';
+    #else
+        std::cout << "Unknown mode. Shutdown\n";
     #endif          
 
     return 0;
