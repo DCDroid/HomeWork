@@ -2,7 +2,7 @@
 
 EquilateralTriangle::EquilateralTriangle(uint32_t a) : Triangle(a, a, a, 60, 60, 60) {
     this->name = "EquilateralTriangle: ";
-    check();
+    EquilateralTriangle::check();
 
     if(correct == false) {
         throw ConstructorError("Error creating equilateral triangle. Reason: not all sides are equal, not all angles are equal to 60");

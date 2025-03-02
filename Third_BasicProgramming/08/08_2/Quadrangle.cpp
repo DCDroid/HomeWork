@@ -11,7 +11,7 @@ Quadrangle::Quadrangle(uint32_t a, uint32_t b, uint32_t c, uint32_t d, uint32_t 
     this->D = D;
     this->name = "Quadrangle: ";
     side_count = 4;
-    check();
+    Quadrangle::check();
 
     if(correct == false) {
         throw ConstructorError("Error creating quadrangle. Reason: the sum of the angles does not equal 360");

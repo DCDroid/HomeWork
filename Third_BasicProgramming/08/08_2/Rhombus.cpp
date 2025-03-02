@@ -2,7 +2,7 @@
 
 Rhombus::Rhombus(uint32_t a, uint32_t A, uint32_t B) : Parallelogram(a, a, A, B) {
     this->name = "Rhombus: ";
-    check();
+    Rhombus::check();
 
     if(correct == false) {
         throw ConstructorError("Error creating rhombus. Reason: not all sides are equal, not all angles are equal to 90");

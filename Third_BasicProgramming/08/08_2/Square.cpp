@@ -3,7 +3,7 @@
 Square::Square(uint32_t a) : Rhombus(a, 90, 90)
 {
     this->name = "Square: ";
-    check();
+    Square::check();
 
     if(correct == false) {
         throw ConstructorError("Error creating square. Reason: not all sides are equal, not all angles are equal to 90");

@@ -10,7 +10,7 @@ Triangle::Triangle(uint32_t a, uint32_t b, uint32_t c, uint32_t A, uint32_t B, u
     this->C = C;
     name = "Triangle: ";
     side_count = 3;
-    check();
+    Triangle::check();
 
     if(correct == false) {
         throw ConstructorError("Error creating triangle. Reason: sum of angles does not equal 180");
