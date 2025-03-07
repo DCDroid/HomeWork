@@ -1,0 +1,11 @@
+
+#include "Figure.h"
+#include "Triangle.h"
+#include "RightAngledTriangle.h"
+#include "IsoscelesTriangle.h"
+#include "EquilateralTriangle.h"
+#include "Quadrangle.h"
+#include "RightAngledQuadrangle.h"
+#include "Square.h"
+#include "Parallelogram.h"
+#include "Rhombus.h"
