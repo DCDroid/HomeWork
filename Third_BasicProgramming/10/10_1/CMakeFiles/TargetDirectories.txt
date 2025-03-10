@@ -1,3 +1,0 @@
-/home/Jim/code/HomeWork/Third_BasicProgramming/10/10_1/CMakeFiles/my_first_cmake_program.dir
-/home/Jim/code/HomeWork/Third_BasicProgramming/10/10_1/CMakeFiles/edit_cache.dir
-/home/Jim/code/HomeWork/Third_BasicProgramming/10/10_1/CMakeFiles/rebuild_cache.dir
