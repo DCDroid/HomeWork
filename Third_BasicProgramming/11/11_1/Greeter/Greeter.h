@@ -1,0 +1,11 @@
+#pragma onece
+
+#include <string>
+
+class Greeter
+{
+public:
+    std::string greet(std::string name);
+    Greeter() = default;
+};
+
