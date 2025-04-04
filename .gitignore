@@ -1,4 +1,4 @@
-# *.o
+*.o
 *.sh
 *.vscode
 test_code
