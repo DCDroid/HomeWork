@@ -4,8 +4,7 @@
 #include <functional>
 #include <list>
 
-#include "../Vehicle/General/Vehicle.h"
-#include "../Vehicle/Air/Air_vehicle.h"
+#include "Headers.h"
 
 enum race_type { air = 1, ground, general };
 
@@ -15,7 +14,9 @@ private:
     race_type m_race_type;
     bool ready{false};
     std::list<Vehicle> vehicleList; 
-    bool available_vehicle[7] = {0};
+    bool available_vehicle[7] = {true}; // Почему не работае заполнение 1 всего массива? 
+    int racers_count{0};
+    int lenght{0};
  
 private:
     void add_vehicle_air(vehicle_type vehicle);
@@ -34,4 +35,6 @@ public:
     void set_length(int length);
 
     bool is_ready();
+
+    void start_race();
 };

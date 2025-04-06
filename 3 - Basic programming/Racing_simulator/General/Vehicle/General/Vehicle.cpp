@@ -1,5 +1,6 @@
 #include "Vehicle.h"
 
-Vehicle::set_distance(int distance) {
-    
+float Vehicle::get_time(int len)
+{
+    return 0;
 }

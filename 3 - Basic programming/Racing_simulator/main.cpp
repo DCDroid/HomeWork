@@ -41,7 +41,14 @@ int main()
         }
         else {
             std::cout << "1. Register a vehicle \n2. Start racing \nEnter action: " << std::endl;
-            
+            std::cin >> tmp_integer;
+            if(tmp_integer == 2) {
+                my_race.start_race();
+
+                // print result
+
+                break;
+            }
         }
 
         std::system("clear");

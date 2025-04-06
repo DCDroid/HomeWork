@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.22.0)
 project(my_first_cmake_project)
 
+set(CMAKE_C_COMPILER "gcc-11.4.0")
+
 # General headers
 
 file(GLOB_RECURSE RACING_H "General/*.h")
