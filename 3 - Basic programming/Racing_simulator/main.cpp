@@ -30,6 +30,8 @@ int main()
     std::cout << "Enter distance length(should be positive): " << std::endl;
     std::cin >> tmp_integer;
 
+    my_race.se
+
     
 
     

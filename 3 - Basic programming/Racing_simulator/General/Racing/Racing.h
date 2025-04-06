@@ -25,4 +25,6 @@ public:
     void set_air_type();
     void set_ground_type();
     void set_general_type();
+
+    void set_length();
 };
