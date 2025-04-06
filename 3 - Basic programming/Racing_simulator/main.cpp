@@ -27,11 +27,37 @@ int main()
     }
 
     std::system("clear");
+    // info
     std::cout << "Enter distance length(should be positive): " << std::endl;
     std::cin >> tmp_integer;
+    my_race.set_length(tmp_integer);
 
-    my_race.se
+    while (true)
+    {
+        std::system("clear");
+        if(my_race.is_ready() == false) {
+            std::cout << "At least 2 vehicles must be registered \n1. Register a vehicle \nEnter action: " << std::endl;
+            std::cin >> tmp_integer; // nothing :)
+        }
+        else {
+            std::cout << "1. Register a vehicle \n2. Start racing \nEnter action: " << std::endl;
+            
+        }
 
+        std::system("clear");
+        // info
+        std::cout << "1. Off road boots\n2. Broom\n3. Camel\n4. Centau\n5. Eagle\n6. Fast camel\n7. Airplane carpet\n0. Registration end\nEnter vehicle or 0 for quit from registration: " << std::endl;
+        std::cin >> tmp_integer;
+        try
+        {
+            my_race.add_vehicle(static_cast<vehicle_type>(tmp_integer));
+        }
+        catch(std::string eText)
+        {
+            std::cout << eText << '\n';
+        }
+    }   
+    
     
 
     
