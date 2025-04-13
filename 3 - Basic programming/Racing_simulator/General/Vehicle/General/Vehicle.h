@@ -1,15 +1,17 @@
 #pragma once
 
+#include <string>
+
 enum vehicle_type { offRoadBoots = 1, broom, camel, centaur, eagle, fastCamel, airplaneCarpet, registrationEnd};
 
 class Vehicle
 {
-private:
-    int speed;
-    float time_of_movement_before_rest;
-    float rest_time;
+protected:
+    float speed;
+    float time;
+    std::string name;
 public:
-    // Vehicle();
-    // void set_distance(int distance);
-    virtual float get_time(int len);
+    virtual float calculate_time(float len);
+    std::string get_name();
+    float get_time() { return this->time; }
 };
