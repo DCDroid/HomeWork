@@ -17,7 +17,9 @@ private:
     bool available_vehicle[7];
     int racers_count{0};
     int length{0};
- 
+    
+    // std::list<Vehicle> vehicleList; 
+    
 private:
     void add_vehicle_air(vehicle_type vehicle);
     void add_vehicle_ground(vehicle_type vehicle);
