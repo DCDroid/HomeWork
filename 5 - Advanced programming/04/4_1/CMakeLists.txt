@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+project(out.o LANGUAGES CXX)
+add_executable(${PROJECT_NAME} main.cpp )
+find_package(Catch2 REQUIRED)
+target_link_libraries(${PROJECT_NAME} Catch2::Catch2)
