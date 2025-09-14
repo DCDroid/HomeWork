@@ -16,6 +16,9 @@ public:
     int* operator[](int row) {
         return data + row * cols;
     }
+
+    Table& operator=(const Table &some) = delete;
+    Table(const Table &some) = delete;
 };
 
 int main()
@@ -28,5 +31,16 @@ int main()
     std::cout << test[0][0]; 
     std::cout << test[0][1]; 
     std::cout << test[1][0]; 
-    std::cout << test[1][1]; 
+    std::cout << test[1][1] << '\n'; 
+
+    /*    
+    Tеперь такое не компилируется
+    Table<int> t1(2, 2);
+    Table<int> t2 = t1;
+
+    Table<int> t1(2, 2);
+    Table<int> t2(3, 3);
+    t2 = t1; // ОПАНЬКИ! Утечка памяти и двойное удаление!
+    */
+
 }

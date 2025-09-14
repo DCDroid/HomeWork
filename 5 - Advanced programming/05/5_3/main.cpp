@@ -1,47 +1,42 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
-class simple_functor {
-    int m_summ;
-    int m_count;
+class Counter 
+{
+
+private:
+    int m_summ = 0;
+    int m_count = 0;
+
 public:
-    simple_functor():
-    m_summ(0),
-    m_count(0)
-    {}
-
-    int get_sum(std::vector<int>& input_numbers)
+    void operator()(int number)
     {
-        for(auto i : input_numbers)
+        if(number % 3 == 0) 
         {
-            if(i % 3 == 0) 
-            {
-                m_summ += i;
-            }
+            m_summ += number;
+            m_count++;
         }
+    }
+
+    int get_sum()
+    {
         return m_summ;
     }
 
-    int get_count(std::vector<int>& input_numbers)
+    int get_count()
     {
-        for(auto i : input_numbers)
-        {
-            if(i % 3 == 0) 
-            {
-                m_count++;
-            }
-        }
         return m_count;
     }
 };
 
 int main() 
 {
-    std::vector<int> numbers = {4, 1, 3, 6, 25, 54};
-    simple_functor sf;
-    
-    std::cout << sf.get_sum(numbers) << std::endl;
-    std::cout << sf.get_count(numbers) << std::endl;
+
+    std::vector<int> numbers = { 4, 1, 3, 6, 25, 54 };
+    Counter counter = std::for_each(numbers.begin(), numbers.end(), Counter());
+    std::cout << "[OUT]: get_sum() = " << counter.get_sum() << std::endl;
+    std::cout << "[OUT]: get_count() = " << counter.get_count() << std::endl;
     
     return 0;
 }
