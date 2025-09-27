@@ -11,13 +11,13 @@ CREATE TABLE if not exists Genre (
 CREATE TABLE if not exists Album (
     id INT NOT NULL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    release data
+    release date
 );
 
 CREATE TABLE if not exists Compilation (
     id INT NOT NULL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    release data
+    release date
 );
 
 CREATE TABLE if not exists Track (
