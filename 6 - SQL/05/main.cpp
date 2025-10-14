@@ -57,7 +57,6 @@ int main()
         users.delete_user("jimhalpert@dunder-mifflin.com");
     }
     
-
     
     {
         auto user = users.find_user("jimhalpert@dunder-mifflin.com");

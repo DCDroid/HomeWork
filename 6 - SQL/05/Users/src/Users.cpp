@@ -18,13 +18,20 @@ void Users::connect_to_db()
             "host=localhost user=postgres password=1q2w3e4r dbname=users port=5432"
         );
     }
-    catch(const std::exception& e)
+    catch(pqxx::sql_error e) // Сначала более конкретное исключение
     {
         std::cerr << e.what() << '\n';
     }
-    catch(pqxx::sql_error e)
+    catch(const std::exception& e) // Затем более общее
     {
         std::cerr << e.what() << '\n';
+    }
+
+    // Проверка, было ли соединение успешно установлено
+    if (!_db_connection || !_db_connection->is_open())
+    {
+        std::cerr << "Connection to DB failed!" << std::endl;
+        return;
     }
 
     _db_connection->prepare("insert_user", "INSERT INTO Users (email, name, second_name) VALUES ($1, $2, $3)");
@@ -44,30 +51,37 @@ void Users::connect_to_db()
 
 void Users::create_db()
 {
-    if(_db_connection->is_open())
+    if(!_db_connection || !_db_connection->is_open())
     {
-        pqxx::work tx( *_db_connection );
-        tx.exec(
-            "CREATE TABLE if not exists Users ("
-            "    email VARCHAR(255) NOT NULL,"
-            "    name VARCHAR(255) NOT NULL,"
-            "    second_name VARCHAR(255) NOT NULL,"
-            "    PRIMARY KEY (email)"
-            ");"
-
-            "CREATE TABLE if not exists PhoneNumbers ("
-            "    email VARCHAR(255) NOT NULL,"
-            "    phone_number VARCHAR(255) NOT NULL,"
-            "    FOREIGN KEY (email) REFERENCES Users (email),"
-            "    PRIMARY KEY (phone_number, email)"
-            ");"
-        );
-        tx.commit();
+        std::cerr << "DB connection is not open." << std::endl;
+        return;
     }
+    pqxx::work tx( *_db_connection );
+    tx.exec(
+        "CREATE TABLE if not exists Users ("
+        "    email VARCHAR(255) NOT NULL,"
+        "    name VARCHAR(255) NOT NULL,"
+        "    second_name VARCHAR(255) NOT NULL,"
+        "    PRIMARY KEY (email)"
+        ");"
+
+        "CREATE TABLE if not exists PhoneNumbers ("
+        "    email VARCHAR(255) NOT NULL,"
+        "    phone_number VARCHAR(255) NOT NULL,"
+        "    FOREIGN KEY (email) REFERENCES Users (email),"
+        "    PRIMARY KEY (phone_number, email)"
+        ");"
+    );
+    tx.commit();
 }
 
 void Users::add_user(UserInfo& user_info)
 {
+    if (!_db_connection || !_db_connection->is_open())
+    {
+        std::cerr << "DB connection is not open." << std::endl;
+        return;
+    }
     try
     {
         pqxx::work tx( *_db_connection );
@@ -84,6 +98,11 @@ void Users::add_user(UserInfo& user_info)
 
 void Users::add_phone_number(UserInfo& user_info)
 {
+    if (!_db_connection || !_db_connection->is_open())
+    {
+        std::cerr << "DB connection is not open." << std::endl;
+        return;
+    }
     try
     {
         pqxx::work tx( *_db_connection );
