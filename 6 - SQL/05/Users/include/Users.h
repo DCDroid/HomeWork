@@ -19,10 +19,10 @@ public:
     ~Users();
     void connect_to_db();
     void create_db();
-    void add_user(UserInfo& info);                 
-    void add_phone_number(std::string phone_number, std::string email);
+    void add_user(UserInfo& user_info);                 
+    void add_phone_number(UserInfo& user_info);
     void change_user(UserInfo& info);
-    void delete_phone_number(std::string phone_number, std::string email);
+    void delete_phone_number(UserInfo& info);
     void delete_user(std::string email);
     UserInfo find_user(std::string email);
 };
