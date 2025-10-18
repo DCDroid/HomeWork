@@ -12,20 +12,9 @@ Users::~Users()
 
 void Users::connect_to_db()
 {
-    try
-    {
-        _db_connection = std::make_unique<pqxx::connection>(
-            "host=localhost user=postgres password=1q2w3e4r dbname=users port=5432"
-        );
-    }
-    catch(pqxx::sql_error e) // Сначала более конкретное исключение
-    {
-        std::cerr << e.what() << '\n';
-    }
-    catch(const std::exception& e) // Затем более общее
-    {
-        std::cerr << e.what() << '\n';
-    }
+    _db_connection = std::make_unique<pqxx::connection>(
+        "host=localhost user= password= dbname=users port=5432"
+    );
 
     // Проверка, было ли соединение успешно установлено
     if (!_db_connection || !_db_connection->is_open())
